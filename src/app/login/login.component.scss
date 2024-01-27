@@ -1,0 +1,16 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    padding: 1em;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
