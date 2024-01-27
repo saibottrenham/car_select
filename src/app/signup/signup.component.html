@@ -1,0 +1,24 @@
+<mat-card>
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="login-form">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+        <!-- Add error messages if needed -->
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password">
+        <!-- Add error messages if needed -->
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="confirmPassword" type="password">
+        <!-- Add error messages if needed -->
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+    </form>
+  </mat-card>
+  

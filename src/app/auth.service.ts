@@ -27,4 +27,8 @@ export class AuthService {
       this.router.navigate(['/login']);
     });
   }
+
+  signup(email: string, password: string) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password);
+  }
 }

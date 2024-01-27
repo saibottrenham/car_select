@@ -12,12 +12,13 @@ export function canActivateFirebaseAuth(route: ActivatedRouteSnapshot) {
     take(1),
     map(user => {
       const isLoginPage = route.routeConfig?.path === 'login';
+      const isSignUpPage = route.routeConfig?.path === 'signup';
 
-      if (user && isLoginPage) {
-        // User is logged in and trying to access the login page, redirect to dashboard
+      if (user && (isLoginPage || isSignUpPage)) {
+        // User is logged in and trying to access the login or signup page, redirect to dashboard
         router.navigate(['/dashboard']);
         return false;
-      } else if (!user && !isLoginPage) {
+      } else if (!user && !isLoginPage && !isSignUpPage) {
         // User is not logged in and trying to access a protected route, redirect to login
         router.navigate(['/login']);
         return false;
