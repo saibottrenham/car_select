@@ -1,0 +1,14 @@
+<!-- header.component.html -->
+<mat-toolbar color="primary">
+    <span>Your App Name</span>
+    <span class="spacer"></span>
+    <div *ngIf="isLoggedIn; else loggedOut">
+      <a mat-button routerLink="/dashboard">Dashboard</a>
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+    <ng-template #loggedOut>
+      <a mat-button routerLink="/login">Login</a>
+      <a mat-button routerLink="/signup">Signup</a>
+    </ng-template>
+  </mat-toolbar>
+  
