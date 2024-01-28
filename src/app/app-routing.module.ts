@@ -3,7 +3,9 @@ import { ActivatedRouteSnapshot, RouterModule, Routes } from '@angular/router';
 import { canActivateFirebaseAuth } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignupComponent } from './signup/signup.component';
+import { ContactComponent } from './contact/contact.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 const routes: Routes = [
     { 
@@ -16,11 +18,12 @@ const routes: Routes = [
       component: DashboardComponent, 
       canActivate: [(route: ActivatedRouteSnapshot) => canActivateFirebaseAuth(route)] 
     },
-    { 
-      path: 'signup', 
-      component: SignupComponent, 
-      canActivate: [(route: ActivatedRouteSnapshot) => canActivateFirebaseAuth(route)] 
-    },
+    { path: 'contact', component: ContactComponent }
+    // { 
+    //   path: 'signup', 
+    //   component: SignupComponent, 
+    //   canActivate: [(route: ActivatedRouteSnapshot) => canActivateFirebaseAuth(route)] 
+    // },
 ];
 
 

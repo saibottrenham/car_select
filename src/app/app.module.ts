@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,6 +22,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './signup/signup.component';
+import { ContactComponent } from './contact/contact.component';
+import { MessageSentComponent } from './message-sent/message-sent.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { SignupComponent } from './signup/signup.component';
     DashboardComponent,
     HeaderComponent,
     FooterComponent,
-    SignupComponent
+    SignupComponent,
+    ContactComponent,
+    MessageSentComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -45,6 +50,7 @@ import { SignupComponent } from './signup/signup.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatSnackBarModule,
     FormsModule
   ],
   providers: [AuthService],
