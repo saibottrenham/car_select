@@ -1,0 +1,43 @@
+.footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: #111; // dark background for a car rental theme
+    color: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); // subtle shadow to lift the footer
+  
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      align-items: start;
+      max-width: 1200px;
+      margin: auto;
+  
+      .footer-section {
+        padding: 10px;
+  
+        h5 {
+          margin-bottom: 10px;
+          color: #eee; // slightly lighter than the footer background
+        }
+  
+        p {
+          font-size: 0.9em;
+          line-height: 1.6em;
+        }
+      }
+    }
+  
+    .footer-bottom {
+      text-align: center;
+      padding: 10px 10px;
+      border-top: 1px solid #222; // a subtle border
+      p {
+        margin: 0;
+        font-size: 0.8em;
+      }
+    }
+  }
+  
+  // Add media queries for responsiveness if needed
+  

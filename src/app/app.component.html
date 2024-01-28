@@ -1,4 +1,8 @@
 <!-- app.component.html -->
-<app-header></app-header> <!-- If you have a header component -->
-<router-outlet></router-outlet> <!-- Where the routed components will be displayed -->
-<!-- <app-footer></app-footer> If you have a footer component -->
+<div class="app-container">
+    <app-header></app-header>
+    <div class="content" role="main">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</div>
