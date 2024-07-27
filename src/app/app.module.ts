@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,4 +63,11 @@ import { VehicleComponent } from './vehicle/vehicle.component';
   providers: [AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    initializeAppCheck(undefined, {
+      provider: new ReCaptchaV3Provider('6LdZnBkqAAAAACwnN9i5uqwGlg9ISycWilpSkEPA'),
+      isTokenAutoRefreshEnabled: true
+    });
+  }
+}
