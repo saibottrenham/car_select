@@ -64,10 +64,10 @@ import { VehicleComponent } from './vehicle/vehicle.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  // constructor() {
-  //   initializeAppCheck(undefined, {
-  //     provider: new ReCaptchaV3Provider('6LdZnBkqAAAAACwnN9i5uqwGlg9ISycWilpSkEPA'),
-  //     isTokenAutoRefreshEnabled: true
-  //   });
-  // }
+  constructor() {
+    initializeAppCheck(undefined, {
+      provider: new ReCaptchaV3Provider('6LdZnBkqAAAAACwnN9i5uqwGlg9ISycWilpSkEPA'),
+      isTokenAutoRefreshEnabled: true
+    });
+  }
 }

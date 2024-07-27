@@ -2,7 +2,7 @@ export const environment = {
     production: false,
     firebaseConfig: {
         apiKey: "AIzaSyAtcuJYxsZ0ahfymrQ1uejzluvb83xLGn8",
-        authDomain: "carselect-74df6.firebaseapp.com",
+        authDomain: "blackteslas.com.au",
         projectId: "carselect-74df6",
         storageBucket: "carselect-74df6.appspot.com",
         messagingSenderId: "411176613640",
