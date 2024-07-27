@@ -1,0 +1,118 @@
+.vehicle-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Max two columns per row */
+  gap: 20px;
+  padding: 20px;
+}
+
+.vehicle-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 0; /* No border radius */
+  width: 100%; /* Ensure card takes full grid cell width */
+  overflow: hidden; /* Ensure content doesn't overflow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-5px);
+}
+
+.carousel {
+  width: 100%; /* Ensure the carousel takes full width */
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  flex: 1 0 auto;
+}
+
+.vehicle-image {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
+}
+
+.vehicle-info {
+  padding: 20px;
+}
+
+.vehicle-info h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.specs,
+.wltp-range {
+  margin: 5px 0;
+}
+
+.price-and-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-top: auto; /* Pushes the button to the bottom */
+  flex-direction: row-reverse; /* Position price on the right */
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black; /* Adjust color as needed */
+  text-decoration: underline; /* Underline the price */
+  margin: 0; /* Reset margin */
+}
+
+.book-button {
+  background-color: black; /* Black background */
+  color: white; /* White font color */
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 15px 20px;
+  flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+@media (max-width: 768px) {
+  .vehicle-container {
+    grid-template-columns: 1fr; /* Full width on mobile */
+  }
+
+  .price-and-button-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to start */
+    padding: 0 20px 20px; /* Adjust padding for mobile */
+  }
+
+  .book-button {
+    width: 100%; /* Full width on mobile */
+    margin-top: 10px;
+    padding: 15px 0;
+  }
+}

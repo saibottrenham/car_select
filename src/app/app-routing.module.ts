@@ -4,10 +4,13 @@ import { canActivateFirebaseAuth } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContactComponent } from './contact/contact.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { VehicleComponent } from './vehicle/vehicle.component'; // Import VehicleComponent
 
 const routes: Routes = [
+    { 
+      path: '', 
+      component: VehicleComponent // Home path shows VehicleComponent
+    },
     { 
       path: 'login', 
       component: LoginComponent, 
@@ -19,13 +22,7 @@ const routes: Routes = [
       canActivate: [(route: ActivatedRouteSnapshot) => canActivateFirebaseAuth(route)] 
     },
     { path: 'contact', component: ContactComponent }
-    // { 
-    //   path: 'signup', 
-    //   component: SignupComponent, 
-    //   canActivate: [(route: ActivatedRouteSnapshot) => canActivateFirebaseAuth(route)] 
-    // },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

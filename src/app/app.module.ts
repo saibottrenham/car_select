@@ -7,11 +7,13 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { environment } from '../environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +26,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageSentComponent } from './message-sent/message-sent.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { MessageSentComponent } from './message-sent/message-sent.component';
     FooterComponent,
     SignupComponent,
     ContactComponent,
-    MessageSentComponent
+    MessageSentComponent,
+    VehicleComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -48,7 +52,9 @@ import { MessageSentComponent } from './message-sent/message-sent.component';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
-    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule, // Added module
+    MatSelectModule,
     MatIconModule,
     MatSnackBarModule,
     FormsModule
