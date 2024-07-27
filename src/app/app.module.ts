@@ -28,6 +28,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageSentComponent } from './message-sent/message-sent.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
+import { initializeApp } from 'firebase/app';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { VehicleComponent } from './vehicle/vehicle.component';
 })
 export class AppModule {
   constructor() {
-    initializeAppCheck(undefined, {
+    const app = initializeApp(environment.firebaseConfig);
+    initializeAppCheck(app, {
       provider: new ReCaptchaV3Provider('6LdZnBkqAAAAACwnN9i5uqwGlg9ISycWilpSkEPA'),
       isTokenAutoRefreshEnabled: true
     });
