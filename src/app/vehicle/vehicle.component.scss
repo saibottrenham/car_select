@@ -1,51 +1,81 @@
 .vehicle-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Max two columns per row */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on big screens (≥1024px) */
   gap: 20px;
-  padding: 20px;
+  padding: 20px 40px; /* Top/bottom: 20px, left/right: 40px */
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .vehicle-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets (768px to 1023px) */
+    padding: 20px 30px; /* Slightly reduced padding for tablets */
+  }
+}
+
+@media (max-width: 767px) {
+  .vehicle-container {
+    grid-template-columns: 1fr; /* 1 column on phones (<768px) */
+    padding: 20px 30px; /* Reduced padding on mobile for better fit */
+  }
 }
 
 .vehicle-card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
-  border-radius: 0; /* No border radius */
-  width: 100%; /* Ensure card takes full grid cell width */
-  overflow: hidden; /* Ensure content doesn't overflow */
+  border-radius: 12px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .vehicle-card:hover {
   transform: translateY(-5px);
 }
 
-.carousel {
-  width: 100%; /* Ensure the carousel takes full width */
-  overflow: hidden;
+.card-content {
+  display: flex;
+  flex-direction: column; /* Stack image and content vertically */
+  height: 100%;
+}
+
+.image-section {
+  flex: 0 0 auto; /* Allow image section to take its natural height */
   position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9; /* Enforce 16:9 ratio */
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .carousel-inner {
   display: flex;
+  height: 100%;
   transition: transform 0.5s ease-in-out;
 }
 
 .carousel-item {
   flex: 1 0 auto;
+  height: 100%;
 }
 
 .vehicle-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 .carousel-control {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   border-radius: 50%;
 }
@@ -58,61 +88,263 @@
   right: 10px;
 }
 
-.vehicle-info {
-  padding: 20px;
+.content-section {
+  flex: 1 1 auto; /* Take remaining space */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
-.vehicle-info h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
+.title-section {
+  width: 100%; /* Span the full width of the card */
+  margin-bottom: 15px; /* Space between title and reviews */
+}
+
+.title-section h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.review-count {
+  font-size: 0.75rem;
+  color: #666;
+  background-color: #e2e8f0;
+  border-radius: 12px;
+  padding: 2px 6px;
+  line-height: 1;
+}
+
+.info-section {
+  margin-top: 5px; /* Space between title and info */
+}
+
+.info-items {
+  display: flex;
+  gap: 10px; /* Reduced gap on mobile for better fit */
+  align-items: flex-start;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column; /* Stack label and value vertically */
+  margin: 0;
+}
+
+.specs-item {
+  flex: 1 1 60%; /* Specs take more space */
+}
+
+.wltp-item {
+  flex: 1 1 40%; /* WLTP range takes less space */
+}
+
+.headline {
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: block; /* Ensure headline takes its own line */
+  margin-bottom: 5px; /* Space between headline and content */
+}
+
+.info-item .label {
+  font-weight: bold;
+  font-size: 0.85rem;
 }
 
 .specs,
 .wltp-range {
-  margin: 5px 0;
+  margin: 4px 0 0 0; /* Small margin above content */
+  font-size: 0.85rem;
 }
 
-.price-and-button-container {
+.reviews-wrapper {
+  margin-top: 15px; /* Space between image and reviews */
+  margin-bottom: 15px; /* Space between reviews and price/button */
+}
+
+.reviews-heading {
+  padding: 8px 0;
+  font-weight: 500;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.reviews-section {
+  padding: 8px 0;
+  background-color: #f9fafb;
+  font-size: 0.85rem;
+}
+
+.review-summary {
+  margin-top: 8px;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.review-date {
+  font-size: 0.75rem;
+  color: #666;
+  margin-left: 10px; /* Space between stars and date */
+}
+
+.author-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-text {
+  font-style: italic;
+  margin: 4px 0;
+}
+
+.review-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 4px;
+  align-items: center;
+}
+
+.review-control {
+  background: #e2e8f0;
+  border-radius: 50%;
+}
+
+.review-control mat-icon {
+  font-size: 14px; /* Adjusted to fit nicely within mat-mini-fab */
+  width: 14px;
+  height: 14px;
+  color: #000000; /* Changed chevron color to black */
+}
+
+.review-control:hover {
+  background: #cbd5e0;
+}
+
+.review-index {
+  font-size: 0.75rem;
+  color: #666;
+  padding: 2px 6px;
+  background-color: #e2e8f0;
+  border-radius: 12px;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.stars mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.stars .filled {
+  color: #f6c344;
+}
+
+.stars .empty {
+  color: #d1d5db;
+}
+
+.price-and-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  margin-top: auto; /* Pushes the button to the bottom */
-  flex-direction: row-reverse; /* Position price on the right */
+  margin-top: 0; /* No extra margin since reviews section has margin-bottom */
 }
 
 .price {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: black; /* Adjust color as needed */
-  text-decoration: underline; /* Underline the price */
-  margin: 0; /* Reset margin */
+  color: #000000;
+  text-decoration: underline;
 }
 
 .book-button {
-  background-color: black; /* Black background */
-  color: white; /* White font color */
-  border-radius: 0;
+  background-color: #000000;
+  color: white;
+  border-radius: 4px;
   text-transform: uppercase;
   font-weight: bold;
-  padding: 15px 20px;
-  flex-shrink: 0; /* Prevent the button from shrinking */
+  padding: 6px 24px; /* Increased padding to make button wider */
+  font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-  .vehicle-container {
-    grid-template-columns: 1fr; /* Full width on mobile */
+.book-button:hover {
+  background-color: #333333;
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .title-section h2 {
+    font-size: 1rem;
   }
 
-  .price-and-button-container {
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to start */
-    padding: 0 20px 20px; /* Adjust padding for mobile */
+  .price {
+    font-size: 1.1rem;
   }
 
   .book-button {
-    width: 100%; /* Full width on mobile */
-    margin-top: 10px;
-    padding: 15px 0;
+    padding: 6px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .image-section {
+    aspect-ratio: 16 / 9; /* Maintain 16:9 ratio on mobile */
+  }
+
+  .info-items {
+    gap: 5px; /* Further reduced gap on mobile for better fit */
+  }
+
+  .specs-item,
+  .wltp-item {
+    flex: 1 1 50%; /* Equal width on mobile */
+  }
+
+  .title-section h2 {
+    font-size: 1rem;
+  }
+
+  .price-and-button {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .book-button {
+    width: 100%;
+    margin-bottom: 8px; /* Space between button and price on mobile */
+    padding: 8px 0;
+  }
+
+  .price {
+    font-size: 1.1rem;
+  }
+
+  .author-image {
+    width: 25px;
+    height: 25px;
+  }
+
+  .review-author {
+    flex-direction: column; /* Stack author info vertically on mobile */
+    align-items: flex-start;
+  }
+
+  .review-date {
+    margin-left: 0; /* Remove margin on mobile */
+    margin-top: 2px; /* Space above date on mobile */
   }
 }
