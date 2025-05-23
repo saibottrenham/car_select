@@ -1,26 +1,71 @@
 <div class="vehicle-container">
-  <mat-card *ngFor="let vehicle of vehicles" class="vehicle-card">
-    <div class="carousel">
-      <div class="carousel-inner" [style.width.%]="100 * vehicle.images.length" [style.transform]="'translateX(' + (-vehicle.currentSlide * 100 / vehicle.images.length) + '%)'">
-        <div class="carousel-item" *ngFor="let image of vehicle.images" [style.width.%]="100 / vehicle.images.length">
-          <img [src]="image" alt="{{ vehicle.name }}" class="vehicle-image">
+  <div *ngFor="let vehicle of vehicles" class="vehicle-card">
+    <div class="card-content">
+      <div class="image-section">
+        <div class="carousel">
+          <div class="carousel-inner" [style.width.%]="100 * vehicle.images.length" [style.transform]="'translateX(' + (-vehicle.currentSlide * 100 / vehicle.images.length) + '%)'">
+            <div class="carousel-item" *ngFor="let image of vehicle.images" [style.width.%]="100 / vehicle.images.length">
+              <img [src]="image" alt="{{ vehicle.name }}" class="vehicle-image">
+            </div>
+          </div>
+          <button mat-icon-button class="carousel-control prev" (click)="prevSlide(vehicle)">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <button mat-icon-button class="carousel-control next" (click)="nextSlide(vehicle)">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
         </div>
       </div>
-      <button mat-icon-button class="carousel-control prev" (click)="prevSlide(vehicle)">
-        <mat-icon>chevron_left</mat-icon>
-      </button>
-      <button mat-icon-button class="carousel-control next" (click)="nextSlide(vehicle)">
-        <mat-icon>chevron_right</mat-icon>
-      </button>
+      <div class="content-section">
+        <div class="title-section">
+          <h2>{{ vehicle.name }} {{ vehicle.year }}</h2>
+          <div class="info-section">
+            <div class="info-items">
+              <div class="info-item specs-item">
+                <span class="headline">Specifications</span>
+                <p class="specs">{{ vehicle.specs.join(', ') }}</p>
+              </div>
+              <div class="info-item wltp-item">
+                <span class="label">WLTP Range:</span>
+                <p class="wltp-range">{{ vehicle.wltpRange }} km</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reviews-wrapper">
+          <div class="reviews-heading" *ngIf="vehicle.reviews?.length">
+            <span class="headline">{{ vehicle.reviews.length }} written Reviews on Turo</span>
+          </div>
+          <div class="reviews-section" *ngIf="vehicle.reviews?.length">
+            <div class="review-summary" *ngIf="vehicle.reviews.length > 0">
+              <p class="review-author">
+                <img [src]="vehicle.reviews[vehicle.currentReviewIndex].author_image" alt="{{ vehicle.reviews[vehicle.currentReviewIndex].author }}" class="author-image">
+                <strong>{{ vehicle.reviews[vehicle.currentReviewIndex].author }}</strong>
+                <span class="stars">
+                  <mat-icon *ngFor="let star of getStarArray(vehicle.reviews[vehicle.currentReviewIndex].stars)" [ngClass]="star ? 'filled' : 'empty'">
+                    star
+                  </mat-icon>
+                </span>
+                <span class="review-date">{{ vehicle.reviews[vehicle.currentReviewIndex].date | date:'MMM d, y' }}</span>
+              </p>
+              <p class="review-text">{{ vehicle.reviews[vehicle.currentReviewIndex].review }}</p>
+              <div class="review-controls" *ngIf="vehicle.reviews.length > 1">
+                <span class="review-index">{{ vehicle.currentReviewIndex + 1 }}/{{ vehicle.reviews.length }}</span>
+                <button mat-mini-fab class="review-control prev" (click)="prevReview(vehicle)">
+                  <mat-icon>chevron_left</mat-icon>
+                </button>
+                <button mat-mini-fab class="review-control next" (click)="nextReview(vehicle)">
+                  <mat-icon>chevron_right</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="price-and-button">
+          <p class="price">${{ vehicle.pricePerDay }} / day</p>
+          <button mat-button class="book-button" (click)="bookVehicle(vehicle)">Book Now</button>
+        </div>
+      </div>
     </div>
-    <div class="vehicle-info">
-      <h2>{{ vehicle.name }} {{ vehicle.year }}</h2>
-      <p class="specs"><strong>Specifications:</strong> {{ vehicle.specs.join(', ') }}</p>
-      <p class="wltp-range"><strong>WLTP Range:</strong> {{ vehicle.wltpRange }} km</p>
-    </div>
-    <div class="price-and-button-container">
-      <p class="price">${{ vehicle.pricePerDay }} / day</p>
-      <button mat-button class="book-button" (click)="bookVehicle(vehicle)">Book Now</button>
-    </div>
-  </mat-card>
+  </div>
 </div>

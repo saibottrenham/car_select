@@ -1,10 +1,22 @@
+// vehicle.model.ts
+export interface Review {
+  author: string;
+  stars: number;
+  review: string;
+  author_image: string;
+  date: string | Date; // Add date property
+}
+
 export interface Vehicle {
   name: string;
-  images: string[];
-  link: string;
-  currentSlide: number;
   year: number;
-  pricePerDay: number;
+  images: string[];
   specs: string[];
-  wltpRange: number; // Add WLTP range
+  wltpRange: number;
+  pricePerDay: number;
+  turo_Rating: number;
+  link: string;
+  reviews: Review[];
+  currentSlide: number;
+  currentReviewIndex: number;
 }
