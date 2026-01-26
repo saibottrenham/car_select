@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "scrape": "ts-node --transpile-only -P tsconfig.scripts.json scripts/pull_reviews.ts"
   },
   "private": true,
   "dependencies": {
@@ -21,9 +22,14 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^24.0.3",
+    "@types/puppeteer": "^7.0.4",
+    "cheerio": "^1.1.0",
     "firebase": "^10.7.2",
-    "puppeteer": "^21.9.0",
+    "puppeteer": "^22.15.0",
     "rxjs": "~7.8.0",
+    "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
